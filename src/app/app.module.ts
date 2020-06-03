@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
+// Para manejar peticiones http 
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
