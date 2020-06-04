@@ -1,1 +1,17 @@
-<p>search works!</p>
+<div class="row">
+    <div class="col">
+        <!-- Cuando se suelta la tecla el valor de la caja de texto que tiene el #termino lo pasamos al componente search -->
+        <input #termino type="text" (keyup)="searchArtist(termino.value)" class="form-control" placeholder="Search Artist">
+    </div>
+</div>
+
+<div class="card-columns m-5">
+    <div *ngFor="let artista of artistas" class="card">
+      <img class="card-img-top" [src]="artista.images[0].url" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+            {{ artista.name }}
+        </h5>
+      </div>
+    </div>
+</div>    

@@ -10,10 +10,11 @@ export class SpotifyService {
     console.log("Service ready!");
   }
 
+  // Obtener los new releases; debemos poner los Headers pues si no marca error de autorización 
   public getNewReleases(){
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQDuh75P3WSMNlL8KSu9VGH-a0muGom5LIE4cjsYdtmBr7rg2MR-IQaF_e_1Erj58zAiGIy4BVAPhd8AoYI' 
+      'Authorization': 'Bearer BQDyGI7JZkGRway4mtfpFZW2nl18HXEXtCGftqrTdM2Cqv5jbcor7pL66lb94O8C0LkUY_fA02aLt-HcoiA' 
     });
 
     /*this.httpService.get('https://api.spotify.com/v1/browse/new-releases', { headers }).subscribe(res =>{
@@ -22,5 +23,16 @@ export class SpotifyService {
 
     return this.httpService.get('https://api.spotify.com/v1/browse/new-releases', { headers });
     
+  }
+
+  // Obtener un artista de acuerdo a un termino de búsqueda 
+  public getArtist(termino: string){
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQDyGI7JZkGRway4mtfpFZW2nl18HXEXtCGftqrTdM2Cqv5jbcor7pL66lb94O8C0LkUY_fA02aLt-HcoiA' 
+    });
+
+    return this.httpService.get(`https://api.spotify.com/v1/search?q=${ termino }&type=artist&limit=15`, { headers });
+
   }
 }
