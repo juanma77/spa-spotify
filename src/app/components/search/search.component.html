@@ -5,13 +5,5 @@
     </div>
 </div>
 
-<div class="card-columns m-5">
-    <div *ngFor="let artista of artistas" class="card">
-      <img class="card-img-top" [src]="artista.images | noImage" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">
-            {{ artista.name }}
-        </h5>
-      </div>
-    </div>
-</div>    
+<!-- Mandamos la propiedad items desde el componente padre search.component al componente hijo cards.component; entonces en ese componente hijo debemos recibir esta propiedad con el mismo nombre y con un Input -->
+<app-cards [items]="artistas"></app-cards>
