@@ -13,6 +13,7 @@ import { ROUTES } from './app.routes';
 
 // Para manejar peticiones http 
 import { HttpClientModule } from '@angular/common/http';
+import { NoImagePipe } from './pipes/no-image.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SearchComponent,
     ArtistComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoImagePipe
   ],
   imports: [
     BrowserModule,
