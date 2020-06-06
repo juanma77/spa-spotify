@@ -5,5 +5,7 @@
     </div>
 </div>
 
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+
 <!-- Mandamos la propiedad items desde el componente padre search.component al componente hijo cards.component; entonces en ese componente hijo debemos recibir esta propiedad con el mismo nombre y con un Input -->
-<app-cards [items]="artistas"></app-cards>
+<app-cards *ngIf="!loading" [items]="artistas"></app-cards>
