@@ -1,6 +1,6 @@
 <div class="card-columns m-5 animated fadeIn">
   <!-- Debemos poner el nombre de la variable que recibimos como Input (items) -->
-    <div *ngFor="let item of items" class="card">
+    <div (click)="showArtist(item)" *ngFor="let item of items" class="card puntero">
       <img class="card-img-top" [src]="item.images | noImage" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">
