@@ -1,1 +1,22 @@
-<p>artist works!</p>
+<!-- Si la información se está cargando mostramos el loading -->
+<app-loading *ngIf="loading"></app-loading>
+
+<!-- Si la información ya la obtuvimos entonces mostramos la información del artista-->
+<div class="row animated fadeIn" *ngIf="!loading">
+    <div class="col-2">
+        <img [src]="artist.images | noImage" class="img-thumbnail img-circle">
+    </div>
+
+    <div class="col">
+        <h3>{{ artist.name }}</h3>
+        <p><a [href]="artist.external_urls.spotify" target="_blank">Ir a la página del artista</a></p>
+    </div>
+
+    <!-- Regresamos a la página de search; esta debe tener el mismo nombre que pusimos en el archivo de routes -->
+    <div class="col-4 text-right">
+        <button routerLink="/search" class="btn btn-outline-danger">
+            Regresar
+        </button>
+    </div>
+
+</div>
