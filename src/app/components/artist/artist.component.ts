@@ -13,6 +13,8 @@ export class ArtistComponent implements OnInit {
 
   public loading: boolean;
 
+  public topTracks: any [] = [];
+
   constructor(private router: ActivatedRoute, private spotifyService: SpotifyService) { 
     this.loading = true;
     
@@ -22,6 +24,9 @@ export class ArtistComponent implements OnInit {
 
       // Obtenemos los parámetros que sería sólo el id; pero con esto se nos devuelve toda la información del artista
       this.getArtist(params ['id']);
+
+      // Obtenemos los top tracks de acuerdo a un id que pertenece a un artista 
+      this.getTopTracks( params['id'] );
     });
     
 
@@ -30,15 +35,29 @@ export class ArtistComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Obtenemos el artista ; artist puede ser "res"; el nombre no importa
   public getArtist(id: string){
     
-    // Obtenemos el artista ; artist puede ser "res"; el nombre no importa
     this.spotifyService.getArtist(id).subscribe(artist =>{
       console.log(artist);
+
       this.artist = artist; 
       this.loading = false; 
     });
     
+  }
+
+  // Obtenemos los top tracks de un artista; aquí llamamos al método que hace esto y que está en el servicio spotify.service
+  public getTopTracks( id: string ){
+
+    this.spotifyService.getTopTracks( id ).subscribe(topTracks =>{
+
+      console.log(topTracks);
+      this.topTracks = topTracks; 
+      
+
+    });
+
   }
 
 }

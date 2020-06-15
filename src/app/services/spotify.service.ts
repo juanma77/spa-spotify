@@ -17,7 +17,7 @@ export class SpotifyService {
     const url = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQCtmw4rVr7KZIzrPEOh-NqOc9gkHpRO6bux-TMOHLbwxqNaz0Y6Ew7lhL8GM0Sy0qZZOEihFFL0RbaUOEE' 
+      'Authorization': 'Bearer BQBExIjc5cyR31ytWfEFfBzLDpMZCgiHdEnfHEVWjATfd6A7Udcfwpl9RdOVarLka8U2CBa24saU_tdxeHI' 
     });
 
     return this.httpService.get(url, { headers });
@@ -34,7 +34,7 @@ export class SpotifyService {
 
   }
 
-  // Obtener un conjunto de artistas de acuerdo a un termino de búsqueda 
+  // Obtener un conjunto de artistas de acuerdo a un termino de búsqueda; el pipe lo usamos para "filtrar", es decir que se nos regrese un solo arreglo y no un arreglo con varios objetos 
   public getArtists(termino: string){
 
     return this.getQuery(`search?q=${ termino }&type=artist&limit=15`).pipe(map (data =>{
@@ -48,6 +48,15 @@ export class SpotifyService {
 
     // No hace falta el pipe pues no necesitamos transformar o filtrar la información pues esta ya viene completa tal como la necesitamos
     return this.getQuery(`artists/${ id }`);
+
+  }
+
+  // Obtenemos los top tracks de un artista 
+  public getTopTracks(id: string){
+
+    return this.getQuery(`artists/${ id }/top-tracks?country=us`).pipe(map (data =>{
+      return data['tracks'];
+    }));
 
   }
 }

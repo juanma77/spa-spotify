@@ -23,10 +23,10 @@ export class SearchComponent implements OnInit {
     console.log(termino);
     this.loading = true; 
 
-    this.spotifyService.getArtists(termino).subscribe((res:any) =>{
-      this.artistas = res;
-      this.loading = false;
-    })
+      this.spotifyService.getArtists(termino).subscribe((res:any) =>{
+        this.artistas = res;
+        this.loading = false;
+    });
 
   }
 
