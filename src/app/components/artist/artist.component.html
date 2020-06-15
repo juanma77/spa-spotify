@@ -41,7 +41,10 @@
                     <td>{{ topTrack.album.name }}</td>
                     <td>{{ topTrack.name }}</td>
                     <td>
-                        <audio [src]="topTrack.preview_url" controls></audio>
+                        <!-- <audio [src]="topTrack.preview_url" controls></audio> -->
+
+                        <!-- Obtenemos el uri del top track de la ruta del widget, usamos el pipe domseguro y le mandamos como parámetro a ese pipe el string a concatenar con el uri -->
+                        <iframe [src]="topTrack.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </td>
                 </tr>
             </tbody>
